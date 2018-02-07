@@ -1,6 +1,6 @@
 {
   "name": "oas2joi",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Create a Joi schema from an Open API Specification",
   "main": "index.js",
   "scripts": {
