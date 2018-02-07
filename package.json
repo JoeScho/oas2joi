@@ -1,0 +1,26 @@
+{
+  "name": "oas2joi",
+  "version": "1.0.0",
+  "description": "Create a Joi schema from an Open API Specification",
+  "main": "index.js",
+  "scripts": {
+    "test": "nyc mocha --recursive"
+  },
+  "keywords": [
+    "openAPI",
+    "schema",
+    "validation"
+  ],
+  "author": "JoeScho",
+  "license": "MIT",
+  "dependencies": {
+    "enjoi": "^3.2.2",
+    "js-yaml": "^3.10.0"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "joi": "^13.1.2",
+    "mocha": "^5.0.0",
+    "nyc": "^11.4.1"
+  }
+}

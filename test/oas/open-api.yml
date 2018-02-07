@@ -1,0 +1,44 @@
+openapi: 3.0.0
+info:
+  version: '1.0.0'
+  title: Demo
+  description: Demo OAS Spec
+paths:
+  /demo:
+    post:
+      summary: Demo
+      description: Demo
+      tags:
+        - Demo
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/request'
+components:
+  schemas:
+    response:
+      type: object
+      required:
+        - demoRes1
+        - demoRes2
+      properties:
+        demoRes1:
+          description: Demo
+          type: string
+          enum:
+            - A
+            - B
+            - C
+        demoRes2:
+          description: Demo
+          type: string
+    error:
+      allOf:
+      - $ref: '#/components/schemas/response'
+      - type: object
+      required:
+        - demoErr1
+      properties:
+        demoErr1:
+          type: string
