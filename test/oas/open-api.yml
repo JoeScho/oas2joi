@@ -42,3 +42,10 @@ components:
       properties:
         demoErr1:
           type: string
+    response2:
+      allOf:
+      - $ref: '#/components/schemas/response'
+      - type: object
+      properties:
+        demoErr1:
+          type: string

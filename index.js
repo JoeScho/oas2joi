@@ -27,9 +27,11 @@ function parseSchema(schemaName, docSchemas) {
     const ref = docSchemas[schemaName].allOf[0].$ref;
     const refName = ref.substring(ref.lastIndexOf("/") + 1, ref.length);
 
-    docSchemas[schemaName].required.forEach((requiredProperty) => {
-      docSchemas[refName].required.push(requiredProperty);
-    });
+    if (docSchemas[schemaName].required) {
+      docSchemas[schemaName].required.forEach((requiredProperty) => {
+        docSchemas[refName].required.push(requiredProperty);
+      });
+    }
 
     Object.assign(docSchemas[refName].properties, docSchemas[schemaName].properties)
 
