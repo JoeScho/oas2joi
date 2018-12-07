@@ -15,7 +15,7 @@ describe('OpenAPI parser', () => {
       expect(schemas.error.isJoi).to.equal(true);
     });
 
-    it('should allow the created schemas to be used for validation', (done) => {
+    it('should allow the created schemas to be used for validation', () => {
       const obj = {
         demoRes1: 'A',
         demoRes2: 'abc123'
@@ -23,11 +23,10 @@ describe('OpenAPI parser', () => {
 
       const { error } = Joi.validate(obj, schemas.response);
       expect(error).to.equal(null);
-      done();
     });
 
     it('should have successfully created a schema from an `allOf` reference',
-      (done) => {
+      () => {
         const obj = {
           demoRes1: 'A',
           demoRes2: 'abc123',
@@ -36,12 +35,11 @@ describe('OpenAPI parser', () => {
 
         const { error } = Joi.validate(obj, schemas.error);
         expect(error).to.equal(null);
-        done();
       });
   });
 
   describe('Failures', () => {
-    it('should fail if the object does not match the schema', (done) => {
+    it('should fail if the object does not match the schema', () => {
       const obj = {
         demoRes1: 'D',
         demoRes2: 'abc123',
@@ -52,7 +50,6 @@ describe('OpenAPI parser', () => {
       expect(error).to.not.equal(null);
       expect(error.details[0].message).to.equal(
         '"demoRes1" must be one of [A, B, C]');
-      done();
     });
   });
 });
