@@ -18,7 +18,6 @@ function getSchemas(filePath) {
   const openapi = fs.readFileSync(filePath, 'utf8');
   const doc = YAML.safeLoad(openapi);
 
-  const schemas = {};
   return doc.components.schemas;
 }
 
@@ -28,7 +27,7 @@ function parseSchema(schemaName, docSchemas) {
     const refName = ref.substring(ref.lastIndexOf("/") + 1, ref.length);
 
     if (docSchemas[schemaName].required) {
-      docSchemas[schemaName].required.forEach((requiredProperty) => {
+      docSchemas[schemaName].required.forEach(requiredProperty => {
         docSchemas[refName].required.push(requiredProperty);
       });
     }
