@@ -1,5 +1,5 @@
 const fs = require('fs');
-const enjoi = require('enjoi');
+const Enjoi = require('enjoi');
 const YAML = require('js-yaml');
 
 function createSchemas(filePath) {
@@ -35,10 +35,10 @@ function parseSchema(schemaName, docSchemas) {
 
     Object.assign(docSchemas[refName].properties, docSchemas[schemaName].properties)
 
-    return enjoi(docSchemas[refName]);
+    return Enjoi.schema(docSchemas[refName]);
   }
 
-  return enjoi(docSchemas[schemaName]);
+  return Enjoi.schema(docSchemas[schemaName]);
 }
 
 module.exports = createSchemas;
