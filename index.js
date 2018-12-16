@@ -1,27 +1,7 @@
-const fs = require('fs');
 const Enjoi = require('enjoi');
-const YAML = require('js-yaml');
+const { getSchemas } = require('./lib/util');
 
-function createSchemas(filePath) {
-  const docSchemas = getSchemas(filePath);
-
-  const joiSchemas = {};
-
-  Object.keys(docSchemas).forEach((schemaName) => {
-    joiSchemas[schemaName] = parseSchema(schemaName, docSchemas);
-  });
-
-  return joiSchemas;
-}
-
-function getSchemas(filePath) {
-  const openapi = fs.readFileSync(filePath, 'utf8');
-  const doc = YAML.safeLoad(openapi);
-
-  return doc.components.schemas;
-}
-
-function parseSchema(schemaName, docSchemas) {
+const parseSchema = (schemaName, docSchemas) => {
   if (docSchemas[schemaName].allOf) {
     const ref = docSchemas[schemaName].allOf[0].$ref;
     const refName = ref.substring(ref.lastIndexOf("/") + 1, ref.length);
@@ -38,6 +18,18 @@ function parseSchema(schemaName, docSchemas) {
   }
 
   return Enjoi.schema(docSchemas[schemaName]);
+}
+
+const createSchemas = filePath => {
+  const docSchemas = getSchemas(filePath);
+
+  const joiSchemas = {};
+
+  Object.keys(docSchemas).forEach(schemaName => {
+    joiSchemas[schemaName] = parseSchema(schemaName, docSchemas);
+  });
+
+  return joiSchemas;
 }
 
 module.exports = createSchemas;
