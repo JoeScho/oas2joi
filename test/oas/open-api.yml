@@ -36,16 +36,8 @@ components:
     error:
       allOf:
       - $ref: '#/components/schemas/response'
-      - type: object
-      required:
+      - required:
         - demoErr1
-      properties:
-        demoErr1:
-          type: string
-    response2:
-      allOf:
-      - $ref: '#/components/schemas/response'
-      - type: object
-      properties:
-        demoErr1:
-          type: string
+        properties:
+          demoErr1:
+            type: string
