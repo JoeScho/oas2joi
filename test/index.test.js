@@ -43,13 +43,25 @@ describe('OpenAPI parser', () => {
       const obj = {
         demoRes1: 'D',
         demoRes2: 'abc123',
-        demoErr1: 'abc123'
       };
 
       const { error } = Joi.validate(obj, schemas.response);
       expect(error).to.not.equal(null);
       expect(error.details[0].message).to.equal(
         '"demoRes1" must be one of [A, B, C]');
+    });
+
+    it('should fail if the object has an extra property', () => {
+      const obj = {
+        demoRes1: 'A',
+        demoRes2: 'abc123',
+        demoErr1: 'abc123'
+      };
+
+      const { error } = Joi.validate(obj, schemas.response);
+      expect(error).to.not.equal(null);
+      expect(error.details[0].message).to.equal(
+        '"demoErr1" is not allowed');
     });
   });
 });
