@@ -35,9 +35,9 @@ components:
           type: string
     error:
       allOf:
-      - $ref: '#/components/schemas/response'
       - required:
         - demoErr1
         properties:
           demoErr1:
             type: string
+      - $ref: '#/components/schemas/response'
