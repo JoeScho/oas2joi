@@ -29,7 +29,8 @@ describe('OpenAPI parser', () => {
       () => {
         const obj = {
           demoRes1: 'A',
-          demoRes2: 'abc123'
+          demoRes2: 'abc123',
+          demoErr1: 'abc123'
         };
 
         const { error } = Joi.validate(obj, schemas.error);

@@ -17,6 +17,14 @@ paths:
               $ref: '#/components/schemas/request'
 components:
   schemas:
+    error:
+      allOf:
+      - required:
+        - demoErr1
+        properties:
+          demoErr1:
+            type: string
+      - $ref: '#/components/schemas/response'
     response:
       type: object
       required:
@@ -33,11 +41,3 @@ components:
         demoRes2:
           description: Demo
           type: string
-    error:
-      allOf:
-      - required:
-        - demoErr1
-        properties:
-          demoErr1:
-            type: string
-      - $ref: '#/components/schemas/response'
