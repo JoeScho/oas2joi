@@ -1,12 +1,12 @@
 {
   "name": "oas2joi",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Create a Joi schema from an Open API Specification",
   "main": "index.js",
   "scripts": {
     "test": "jest --coverage"
   },
-  "pre-commit":  "test",
+  "pre-commit": "test",
   "keywords": [
     "openAPI",
     "schema",
