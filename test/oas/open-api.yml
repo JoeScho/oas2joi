@@ -41,3 +41,8 @@ components:
         demoRes2:
           description: Demo
           type: string
+    optional:
+      allOf:
+        - properties:
+            aProperty:
+              type: string
