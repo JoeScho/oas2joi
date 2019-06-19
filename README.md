@@ -10,7 +10,7 @@ npm i oas2joi
 
 ```
 const oas2joi = require('oas2joi');
-const Joi = require('joi');
+const Joi = require('@hapi/joi');
 
 const schemas = oas2joi('./path/to/open-api.yml');
 

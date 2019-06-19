@@ -1,6 +1,4 @@
-const { describe, it } = require('mocha');
-const { expect } = require('chai');
-const Joi = require('joi');
+const Joi = require('@hapi/joi');
 
 const oas2joi = require('../index');
 
@@ -9,10 +7,10 @@ describe('OpenAPI parser', () => {
 
   describe('Success', () => {
     it('should have created schemas', () => {
-      expect(schemas).to.have.property('response');
-      expect(schemas.response.isJoi).to.equal(true);
-      expect(schemas).to.have.property('error');
-      expect(schemas.error.isJoi).to.equal(true);
+      expect(schemas).toHaveProperty('response');
+      expect(schemas.response.isJoi).toEqual(true);
+      expect(schemas).toHaveProperty('error');
+      expect(schemas.error.isJoi).toEqual(true);
     });
 
     it('should allow the created schemas to be used for validation', () => {
@@ -22,7 +20,14 @@ describe('OpenAPI parser', () => {
       };
 
       const { error } = Joi.validate(obj, schemas.response);
-      expect(error).to.equal(null);
+      expect(error).toEqual(null);
+    });
+
+    it('should allow the non-required properties to be missing', () => {
+      const obj = {};
+
+      const { error } = Joi.validate(obj, schemas.optional);
+      expect(error).toEqual(null);
     });
 
     it('should have successfully created a schema from an `allOf` reference',
@@ -34,7 +39,7 @@ describe('OpenAPI parser', () => {
         };
 
         const { error } = Joi.validate(obj, schemas.error);
-        expect(error).to.equal(null);
+        expect(error).toEqual(null);
       });
   });
 
@@ -46,8 +51,7 @@ describe('OpenAPI parser', () => {
       };
 
       const { error } = Joi.validate(obj, schemas.response);
-      expect(error).to.not.equal(null);
-      expect(error.details[0].message).to.equal(
+      expect(error.details[0].message).toEqual(
         '"demoRes1" must be one of [A, B, C]');
     });
 
@@ -59,8 +63,7 @@ describe('OpenAPI parser', () => {
       };
 
       const { error } = Joi.validate(obj, schemas.response);
-      expect(error).to.not.equal(null);
-      expect(error.details[0].message).to.equal(
+      expect(error.details[0].message).toEqual(
         '"demoErr1" is not allowed');
     });
   });

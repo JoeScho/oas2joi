@@ -4,8 +4,9 @@
   "description": "Create a Joi schema from an Open API Specification",
   "main": "index.js",
   "scripts": {
-    "test": "nyc mocha --recursive"
+    "test": "jest --coverage"
   },
+  "pre-commit":  "test",
   "keywords": [
     "openAPI",
     "schema",
@@ -14,14 +15,13 @@
   "author": "JoeScho",
   "license": "MIT",
   "dependencies": {
-    "enjoi": "^5.0.0",
+    "enjoi": "^6.0.0",
     "js-yaml": "^3.10.0"
   },
   "devDependencies": {
-    "chai": "^4.1.2",
-    "joi": "^14.3.0",
-    "mocha": "^5.0.0",
-    "nyc": "^13.1.0"
+    "@hapi/joi": "^15.0.3",
+    "jest": "^24.8.0",
+    "pre-commit": "^1.2.2"
   },
   "files": [
     "index.js",
