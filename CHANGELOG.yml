@@ -1,0 +1,6 @@
+# Changelog
+
+### `1.0.5` 21-02-2020
+- Bump version of @hapi/joi used in tests
+- Update README.md to reflect accurate usage of @hapi/joi
+- Fix vulnerabilities
