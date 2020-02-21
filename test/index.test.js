@@ -19,14 +19,14 @@ describe('OpenAPI parser', () => {
         demoRes2: 'abc123'
       };
 
-      const { error } = Joi.validate(obj, schemas.response);
+      const { error } = schemas.response.validate(obj);
       expect(error).toEqual(null);
     });
 
     it('should allow the non-required properties to be missing', () => {
       const obj = {};
 
-      const { error } = Joi.validate(obj, schemas.optional);
+      const { error } = schemas.optional.validate(obj);
       expect(error).toEqual(null);
     });
 
@@ -38,7 +38,7 @@ describe('OpenAPI parser', () => {
           demoErr1: 'abc123'
         };
 
-        const { error } = Joi.validate(obj, schemas.error);
+        const { error } = schemas.error.validate(obj);
         expect(error).toEqual(null);
       });
   });
@@ -50,7 +50,7 @@ describe('OpenAPI parser', () => {
         demoRes2: 'abc123',
       };
 
-      const { error } = Joi.validate(obj, schemas.response);
+      const { error } = schemas.response.validate(obj);
       expect(error.details[0].message).toEqual(
         '"demoRes1" must be one of [A, B, C]');
     });
@@ -62,7 +62,7 @@ describe('OpenAPI parser', () => {
         demoErr1: 'abc123'
       };
 
-      const { error } = Joi.validate(obj, schemas.response);
+      const { error } = schemas.response.validate(obj);
       expect(error.details[0].message).toEqual(
         '"demoErr1" is not allowed');
     });

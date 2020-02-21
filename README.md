@@ -10,13 +10,13 @@ npm i oas2joi
 
 ```
 const oas2joi = require('oas2joi');
-const Joi = require('@hapi/joi');
 
-const schemas = oas2joi('./path/to/open-api.yml');
+const schemas = oas2joi('./test/oas/open-api.yml');
 
 const someObject = {
-  foo: 'bar'
+  demoRes1: 'A',
+  demoRes2: 'baz'
 };
 
-const { error } = Joi.validate(someObject, schemas.someObject);
+const { error } = schemas.response.validate(someObject));
 ```

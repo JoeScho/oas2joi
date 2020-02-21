@@ -19,7 +19,7 @@
     "js-yaml": "^3.10.0"
   },
   "devDependencies": {
-    "@hapi/joi": "^15.0.3",
+    "@hapi/joi": "^17.1.0",
     "jest": "^24.8.0",
     "pre-commit": "^1.2.2"
   },
