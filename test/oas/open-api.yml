@@ -46,3 +46,16 @@ components:
         - properties:
             aProperty:
               type: string
+    request:
+      type: object
+      properties:
+        foo:
+          type: string
+    referenced:
+      allOf:
+      - required:
+        - demoErr1
+        properties:
+          demoErr1:
+            type: string
+      - $ref: 'open-api-ref.yml#/components/schemas/referenced'

@@ -1,0 +1,23 @@
+openapi: 3.0.0
+info:
+  version: '1.0.0'
+  title: reference demo
+paths: {}
+components:
+  schemas:
+    referenced:
+      type: object
+      required:
+        - demoRes1
+        - demoRes2
+      properties:
+        demoRes1:
+          description: Demo
+          type: string
+          enum:
+            - A
+            - B
+            - C
+        demoRes2:
+          description: Demo
+          type: string
