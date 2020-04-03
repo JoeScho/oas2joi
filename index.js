@@ -11,8 +11,8 @@ const parseSchema = (schemaName, docSchemas) => {
   return Enjoi.schema(docSchemas[schemaName]);
 }
 
-module.exports = filePath => {
-  const docSchemas = getSchemas(filePath);
+module.exports = async filePath => {
+  const docSchemas = await getSchemas(filePath);
 
   const joiSchemas = {};
 

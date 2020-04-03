@@ -16,7 +16,7 @@
   "license": "MIT",
   "dependencies": {
     "enjoi": "^6.0.0",
-    "js-yaml": "^3.10.0"
+    "swagger-parser": "^9.0.1"
   },
   "devDependencies": {
     "@hapi/joi": "^15.0.3",

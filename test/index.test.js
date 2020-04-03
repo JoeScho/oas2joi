@@ -3,7 +3,10 @@ const Joi = require('@hapi/joi');
 const oas2joi = require('../index');
 
 describe('OpenAPI parser', () => {
-  const schemas = oas2joi('./test/oas/open-api.yml');
+  let schemas;
+  beforeAll(async () => {
+    schemas = await oas2joi('./test/oas/open-api.yml');
+  })
 
   describe('Success', () => {
     it('should have created schemas', () => {
@@ -39,6 +42,17 @@ describe('OpenAPI parser', () => {
         };
 
         const { error } = Joi.validate(obj, schemas.error);
+        expect(error).toEqual(null);
+      });
+
+      it('should allow $ref in schemas to be used for validation', () => {
+        const obj = {
+          demoErr1: 'foo',
+          demoRes1: 'A',
+          demoRes2: 'abc123'
+        };
+  
+        const { error } = Joi.validate(obj, schemas.referenced);
         expect(error).toEqual(null);
       });
   });
