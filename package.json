@@ -1,6 +1,6 @@
 {
   "name": "oas2joi",
-  "version": "1.0.4",
+  "version": "2.0.0",
   "description": "Create a Joi schema from an Open API Specification",
   "main": "index.js",
   "scripts": {
@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "@hapi/joi": "^15.0.3",
+    "contributor-faces": "^1.0.3",
     "jest": "^24.8.0",
     "pre-commit": "^1.2.2"
   },
