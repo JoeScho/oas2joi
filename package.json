@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "@hapi/joi": "^15.0.3",
+    "contributor-faces": "^1.0.3",
     "jest": "^24.8.0",
     "pre-commit": "^1.2.2"
   },
