@@ -15,7 +15,7 @@
   "author": "JoeScho",
   "license": "MIT",
   "dependencies": {
-    "enjoi": "^6.0.0",
+    "enjoi": "^7.0.0",
     "swagger-parser": "^9.0.1"
   },
   "devDependencies": {
