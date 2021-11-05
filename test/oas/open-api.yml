@@ -27,6 +27,7 @@ components:
       - $ref: '#/components/schemas/response'
     response:
       type: object
+      additionalProperties: false
       required:
         - demoRes1
         - demoRes2
