@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "contributor-faces": "^1.0.3",
-    "jest": "^24.8.0",
+    "jest": "^27.3.1",
     "joi": "^17.4.2",
     "pre-commit": "^1.2.2"
   },
