@@ -1,5 +1,3 @@
-const Joi = require('@hapi/joi');
-
 const oas2joi = require('../index');
 
 describe('OpenAPI parser', () => {
@@ -11,9 +9,7 @@ describe('OpenAPI parser', () => {
   describe('Success', () => {
     it('should have created schemas', () => {
       expect(schemas).toHaveProperty('response');
-      expect(schemas.response.isJoi).toEqual(true);
       expect(schemas).toHaveProperty('error');
-      expect(schemas.error.isJoi).toEqual(true);
     });
 
     it('should allow the created schemas to be used for validation', () => {
@@ -22,15 +18,15 @@ describe('OpenAPI parser', () => {
         demoRes2: 'abc123'
       };
 
-      const { error } = Joi.validate(obj, schemas.response);
-      expect(error).toEqual(null);
+      const { error } = schemas.response.validate(obj);
+      expect(error).toBeUndefined();
     });
 
     it('should allow the non-required properties to be missing', () => {
       const obj = {};
 
-      const { error } = Joi.validate(obj, schemas.optional);
-      expect(error).toEqual(null);
+      const { error } = schemas.optional.validate(obj);
+      expect(error).toBeUndefined();
     });
 
     it('should have successfully created a schema from an `allOf` reference',
@@ -41,8 +37,8 @@ describe('OpenAPI parser', () => {
           demoErr1: 'abc123'
         };
 
-        const { error } = Joi.validate(obj, schemas.error);
-        expect(error).toEqual(null);
+        const { error } = schemas.error.validate(obj);
+        expect(error).toBeUndefined();
       });
 
       it('should allow $ref in schemas to be used for validation', () => {
@@ -52,8 +48,8 @@ describe('OpenAPI parser', () => {
           demoRes2: 'abc123'
         };
   
-        const { error } = Joi.validate(obj, schemas.referenced);
-        expect(error).toEqual(null);
+        const { error } = schemas.referenced.validate(obj);
+        expect(error).toBeUndefined();
       });
   });
 
@@ -64,7 +60,7 @@ describe('OpenAPI parser', () => {
         demoRes2: 'abc123',
       };
 
-      const { error } = Joi.validate(obj, schemas.response);
+      const { error } = schemas.response.validate(obj);
       expect(error.details[0].message).toEqual(
         '"demoRes1" must be one of [A, B, C]');
     });
@@ -76,7 +72,7 @@ describe('OpenAPI parser', () => {
         demoErr1: 'abc123'
       };
 
-      const { error } = Joi.validate(obj, schemas.response);
+      const { error } = schemas.response.validate(obj);
       expect(error.details[0].message).toEqual(
         '"demoErr1" is not allowed');
     });
